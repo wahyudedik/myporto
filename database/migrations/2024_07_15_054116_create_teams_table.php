@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->foreign('social_media_id')
                     ->references('id')
-                    ->on('social_medias')
+                    ->on('social_media')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
         });
