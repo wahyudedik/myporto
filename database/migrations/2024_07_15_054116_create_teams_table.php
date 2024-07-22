@@ -21,10 +21,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('social_media_id')
-                    ->references('id')
-                    ->on('social_media')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
+            ->references('id')
+            ->on('social_media')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 

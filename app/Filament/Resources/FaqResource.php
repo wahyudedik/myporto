@@ -27,7 +27,12 @@ class FaqResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('pertanyaan')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('jawaban')
+                    ->required()
+                    ->maxLength(65535),
             ]);
     }
 
@@ -35,13 +40,19 @@ class FaqResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('pertanyaan'),
+                Tables\Columns\TextColumn::make('jawaban'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime(),
             ])
             ->filters([
-                //
+                //Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

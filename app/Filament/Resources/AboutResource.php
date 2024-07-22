@@ -27,7 +27,26 @@ class AboutResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required(),
+                Forms\Components\TextInput::make('description')
+                    ->required(),
+                Forms\Components\TextInput::make('school')
+                    ->required(),
+                Forms\Components\TextInput::make('major')
+                    ->required(),
+                Forms\Components\TextInput::make('work')
+                    ->required(),
+                Forms\Components\TextInput::make('hobby')
+                    ->required(),
+                Forms\Components\TextInput::make('technology')
+                    ->required(),
+                Forms\Components\TextInput::make('address')
+                    ->required(),
+                Forms\Components\TextInput::make('tlp')
+                    ->required(),
+                Forms\Components\TextInput::make('email')
+                    ->required(),
             ]);
     }
 
@@ -35,13 +54,27 @@ class AboutResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('school'),
+                Tables\Columns\TextColumn::make('major'),
+                Tables\Columns\TextColumn::make('work'),
+                Tables\Columns\TextColumn::make('hobby'),
+                Tables\Columns\TextColumn::make('technology'),
+                Tables\Columns\TextColumn::make('address'),
+                Tables\Columns\TextColumn::make('tlp'),
+                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime(),
             ])
             ->filters([
-                //
+                //Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
