@@ -17,27 +17,54 @@ class DiscountResource extends Resource
 {
     protected static ?string $model = Discount::class;
 
+    protected static ?string $navigationGroup = 'Product';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
-            ]);
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('description')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('discount_persentage')
+                    ->required()
+                    ->integer(),
+                Forms\Components\DatePicker::make('discount_start_date')
+                    ->required(),
+                Forms\Components\DatePicker::make('discount_end_date')
+                    ->required(),
+                Forms\Components\Toggle::make('status')
+                    ->required()
+                    ->default(true),            
+                ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('discount_persentage'),
+                Tables\Columns\TextColumn::make('discount_start_date'),
+                Tables\Columns\TextColumn::make('discount_end_date'),
+                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

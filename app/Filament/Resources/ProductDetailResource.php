@@ -17,13 +17,27 @@ class ProductDetailResource extends Resource
 {
     protected static ?string $model = ProductDetail::class;
 
+    protected static ?string $navigationGroup = 'Product';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('product_id')
+                ->relationship('product', 'name'),
+                Forms\Components\TextInput::make('img1'),
+                Forms\Components\TextInput::make('img2'),
+                Forms\Components\TextInput::make('img3'),
+                Forms\Components\TextInput::make('img4'),
+                Forms\Components\TextInput::make('price'),
+                Forms\Components\Select::make('discount_id')
+                ->relationship('discount', 'name'),
+                Forms\Components\TextInput::make('total_price'),
+                Forms\Components\Select::make('product_category_id')
+                ->relationship('product_category', 'name'),
+                Forms\Components\DatePicker::make('start_date'),
             ]);
     }
 
@@ -31,13 +45,27 @@ class ProductDetailResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('product_id'),
+                Tables\Columns\TextColumn::make('img1'),
+                Tables\Columns\TextColumn::make('img2'),
+                Tables\Columns\TextColumn::make('img3'),
+                Tables\Columns\TextColumn::make('img4'),
+                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\TextColumn::make('discount_id'),
+                Tables\Columns\TextColumn::make('total_price'),
+                Tables\Columns\TextColumn::make('product_category_id'),
+                Tables\Columns\TextColumn::make('start_date'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -49,7 +77,9 @@ class ProductDetailResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\DiscountRelationManager::class,
+            RelationManagers\ProductCategoryRelationManager::class,
+            RelationManagers\ProductRelationManager::class,
         ];
     }
 
