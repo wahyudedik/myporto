@@ -1,12 +1,12 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Index - Vesperr Bootstrap Template</title>
+<title>Welcome</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="{{ asset('home/assets/img/favicon.png')}}" rel="icon">
-<link href="{{ asset('home/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+<link href="{{ asset('home/assets/img/icon.jpeg')}}" rel="icon">
+<link href="{{ asset('home/assets/img/icon.jpeg')}}" rel="logo-touch-icon">
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect">

@@ -21,7 +21,7 @@ class FaqResource extends Resource
 
     protected static ?string $navigationGroup = 'Settings';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
 
     public static function form(Form $form): Form
     {
@@ -40,8 +40,11 @@ class FaqResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('pertanyaan'),
-                Tables\Columns\TextColumn::make('jawaban'),
+                Tables\Columns\TextColumn::make('pertanyaan')
+                ->markdown()
+                ->searchable(),
+                Tables\Columns\TextColumn::make('jawaban')
+                ->markdown(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

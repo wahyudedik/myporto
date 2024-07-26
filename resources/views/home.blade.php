@@ -7,16 +7,18 @@
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1>Grow your business with Vesperr</h1>
-                    <p>We are team of talented designers making websites with Bootstrap</p>
+                    <h1>Selamat Datang di Website WahyuDedik.Tech</h1>
+                    <p>Disini saya dan tim akan membantu membuatkan website idaman untuk kalian semua yang membutuhkan
+                        jasa kami
+                    </p>
                     <div class="d-flex">
-                        <a href="#about" class="btn-get-started">Get Started</a>
+                        <a href="https://wa.me/6281654932383" target="__blank" class="btn-get-started">Whatsapp</a>
                         <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ"
                             class="glightbox btn-watch-video d-flex align-items-center"></a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img">
-                    <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+                    <img src="{{ asset('home/assets/img/hero-img.png') }}" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -30,29 +32,11 @@
 
             <div class="row gy-4">
 
-                <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-                </div><!-- End Client Item -->
-
-                <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-                </div><!-- End Client Item -->
-
-                <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-                </div><!-- End Client Item -->
-
-                <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-                </div><!-- End Client Item -->
-
-                <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-                </div><!-- End Client Item -->
-
-                <div class="col-xl-2 col-md-3 col-6 client-logo">
-                    <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-                </div><!-- End Client Item -->
+                @foreach ($clients as $client)
+                    <div class="col-xl-2 col-md-3 col-6 client-logo">
+                        <img src="{{ asset('storage/' . $client->img) }}" class="img-fluid" alt="">
+                    </div><!-- End Client Item -->
+                @endforeach
 
             </div>
 
@@ -66,7 +50,9 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>About Us</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Hello semuanya semoga hari anda menyenangkan hari ini @php
+                date('d-m-Y');
+            @endphp</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -74,10 +60,9 @@
             <div class="row gy-5">
 
                 <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Voluptatem dignissimos provident quasi</h3>
+                    <h3>{{ $abouts->name }}</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                        {{ $abouts->description }}
                     </p>
                     <a href="#" class="about-btn align-self-center align-self-xl-start"><span>About us</span> <i
                             class="bi bi-chevron-right"></i></a>
@@ -88,26 +73,27 @@
 
                         <div class="col-md-6 icon-box position-relative">
                             <i class="bi bi-briefcase"></i>
-                            <h4><a href="" class="stretched-link">Corporis voluptates sit</a></h4>
-                            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                            <h4><a href="" class="stretched-link">Work</a></h4>
+                            <p>{{ $abouts->work }}</p>
                         </div><!-- Icon-Box -->
 
                         <div class="col-md-6 icon-box position-relative">
                             <i class="bi bi-gem"></i>
-                            <h4><a href="" class="stretched-link">Ullamco laboris nisi</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                            <h4><a href="" class="stretched-link">School</a></h4>
+                            <p>{{ $abouts->school }}</p>
+                            <p>{{ $abouts->major }}</p>
                         </div><!-- Icon-Box -->
 
                         <div class="col-md-6 icon-box position-relative">
                             <i class="bi bi-broadcast"></i>
-                            <h4><a href="" class="stretched-link">Labore consequatur</a></h4>
-                            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                            <h4><a href="" class="stretched-link">Hobby</a></h4>
+                            <p>{{ $abouts->hobby }}</p>
                         </div><!-- Icon-Box -->
 
                         <div class="col-md-6 icon-box position-relative">
                             <i class="bi bi-easel"></i>
-                            <h4><a href="" class="stretched-link">Beatae veritatis</a></h4>
-                            <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                            <h4><a href="" class="stretched-link">Technology</a></h4>
+                            <p>{{ $abouts->technology }}</p>
                         </div><!-- Icon-Box -->
 
                     </div>
@@ -127,7 +113,7 @@
             <div class="row gy-4 align-items-center">
 
                 <div class="col-lg-5">
-                    <img src="assets/img/stats-img.svg" alt="" class="img-fluid">
+                    <img src="{{ asset('home/assets/img/stats-img.svg') }}" alt="" class="img-fluid">
                 </div>
 
                 <div class="col-lg-7">
@@ -138,9 +124,9 @@
                             <div class="stats-item d-flex">
                                 <i class="bi bi-emoji-smile flex-shrink-0"></i>
                                 <div>
-                                    <span data-purecounter-start="0" data-purecounter-end="232"
+                                    <span data-purecounter-start="0" data-purecounter-end="{{ $targets->jumlah_client_happy }}"
                                         data-purecounter-duration="1" class="purecounter"></span>
-                                    <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
+                                    <p><strong>Happy Clients</strong> <span>Bahagianya client adalah kebahagian kita juga.</span></p>
                                 </div>
                             </div>
                         </div><!-- End Stats Item -->
@@ -149,9 +135,9 @@
                             <div class="stats-item d-flex">
                                 <i class="bi bi-journal-richtext flex-shrink-0"></i>
                                 <div>
-                                    <span data-purecounter-start="0" data-purecounter-end="521"
+                                    <span data-purecounter-start="0" data-purecounter-end="{{ $targets->jumlah_project }}"
                                         data-purecounter-duration="1" class="purecounter"></span>
-                                    <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
+                                    <p><strong>Projects</strong> <span>Seperti membuat dunia baru</span></p>
                                 </div>
                             </div>
                         </div><!-- End Stats Item -->
@@ -160,9 +146,9 @@
                             <div class="stats-item d-flex">
                                 <i class="bi bi-headset flex-shrink-0"></i>
                                 <div>
-                                    <span data-purecounter-start="0" data-purecounter-end="1453"
+                                    <span data-purecounter-start="0" data-purecounter-end="{{ $targets->jam_support }}"
                                         data-purecounter-duration="1" class="purecounter"></span>
-                                    <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
+                                    <p><strong>Hours Of Support</strong> <span>Setia Menemani</span></p>
                                 </div>
                             </div>
                         </div><!-- End Stats Item -->
@@ -171,9 +157,9 @@
                             <div class="stats-item d-flex">
                                 <i class="bi bi-people flex-shrink-0"></i>
                                 <div>
-                                    <span data-purecounter-start="0" data-purecounter-end="32"
-                                        data-purecounter-duration="1" class="purecounter"></span>
-                                    <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
+                                    <span data-purecounter-start="0" data-purecounter-end="{{ $targets->jumlah_team }}" data-purecounter-duration="1"
+                                        class="purecounter"></span>
+                                    <p><strong>Hard Workers</strong> <span>Pantang tidur sebelum fixs</span></p>
                                 </div>
                             </div>
                         </div><!-- End Stats Item -->
@@ -194,7 +180,7 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Services</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Layanan - layanan yang kami berikan adalah sebagai berikut ini</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -239,87 +225,13 @@
 
     </section><!-- /Services Section -->
 
-    <!-- Alt Services Section -->
-    <section id="alt-services" class="alt-services section">
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row gy-4">
-
-                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="service-item position-relative">
-                        <div class="img">
-                            <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="details">
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>Nesciunt Mete</h3>
-                            </a>
-                            <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure
-                                perferendis.</p>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="service-item position-relative">
-                        <div class="img">
-                            <img src="assets/img/services-2.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="details">
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>Eosle Commodi</h3>
-                            </a>
-                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic
-                                non ut nesciunt dolorem.</p>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="service-item position-relative">
-                        <div class="img">
-                            <img src="assets/img/services-3.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="details">
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>Ledo Markt</h3>
-                            </a>
-                            <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas
-                                adipisci eos earum corrupti.</p>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
-                <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="service-item position-relative">
-                        <div class="img">
-                            <img src="assets/img/services-4.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="details">
-                            <a href="service-details.html" class="stretched-link">
-                                <h3>Asperiores Commodit</h3>
-                            </a>
-                            <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit
-                                provident adipisci neque.</p>
-                            <a href="service-details.html" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div><!-- End Service Item -->
-
-            </div>
-
-        </div>
-
-    </section><!-- /Alt Services Section -->
-
     <!-- Features Section -->
     <section id="features" class="features section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Features</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Berikut adalah fitur - fitur yang kami tawarkan untuk membantu pengembangan website anda.</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -329,84 +241,84 @@
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="features-item">
                         <i class="bi bi-eye" style="color: #ffbb2c;"></i>
-                        <h3><a href="" class="stretched-link">Lorem Ipsum</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name1 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="features-item">
                         <i class="bi bi-infinity" style="color: #5578ff;"></i>
-                        <h3><a href="" class="stretched-link">Dolor Sitema</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name2 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="features-item">
                         <i class="bi bi-mortarboard" style="color: #e80368;"></i>
-                        <h3><a href="" class="stretched-link">Sed perspiciatis</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name3 }}s</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="features-item">
                         <i class="bi bi-nut" style="color: #e361ff;"></i>
-                        <h3><a href="" class="stretched-link">Magni Dolores</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name12 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
                     <div class="features-item">
                         <i class="bi bi-shuffle" style="color: #47aeff;"></i>
-                        <h3><a href="" class="stretched-link">Nemo Enim</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name4 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="features-item">
                         <i class="bi bi-star" style="color: #ffa76e;"></i>
-                        <h3><a href="" class="stretched-link">Eiusmod Tempor</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name5 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
                     <div class="features-item">
                         <i class="bi bi-x-diamond" style="color: #11dbcf;"></i>
-                        <h3><a href="" class="stretched-link">Midela Teren</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name6 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
                     <div class="features-item">
                         <i class="bi bi-camera-video" style="color: #4233ff;"></i>
-                        <h3><a href="" class="stretched-link">Pira Neve</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name7 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
                     <div class="features-item">
                         <i class="bi bi-command" style="color: #b2904f;"></i>
-                        <h3><a href="" class="stretched-link">Dirada Pack</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name8 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1000">
                     <div class="features-item">
                         <i class="bi bi-dribbble" style="color: #b20969;"></i>
-                        <h3><a href="" class="stretched-link">Moton Ideal</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name9 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1100">
                     <div class="features-item">
                         <i class="bi bi-activity" style="color: #ff5828;"></i>
-                        <h3><a href="" class="stretched-link">Verdo Park</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name10 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
                 <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1200">
                     <div class="features-item">
                         <i class="bi bi-brightness-high" style="color: #29cc61;"></i>
-                        <h3><a href="" class="stretched-link">Flavor Nivelanda</a></h3>
+                        <h3><a href="" class="stretched-link">{{ $features->name11 }}</a></h3>
                     </div>
                 </div><!-- End Feature Item -->
 
@@ -880,149 +792,30 @@
 
     </section><!-- /Team Section -->
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Pricing</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-            <div class="row gy-4">
-
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="pricing-item">
-                        <h3>Free Plan</h3>
-                        <h4><sup>$</sup>0<span> / month</span></h4>
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                        </ul>
-                        <a href="#" class="buy-btn">Buy Now</a>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="pricing-item featured">
-                        <h3>Business Plan</h3>
-                        <h4><sup>$</sup>29<span> / month</span></h4>
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                            <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                            <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                        </ul>
-                        <a href="#" class="buy-btn">Buy Now</a>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="pricing-item">
-                        <h3>Developer Plan</h3>
-                        <h4><sup>$</sup>49<span> / month</span></h4>
-                        <ul>
-                            <li><i class="bi bi-check"></i> <span>Quam adipiscing vitae proin</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nec feugiat nisl pretium</span></li>
-                            <li><i class="bi bi-check"></i> <span>Nulla at volutpat diam uteera</span></li>
-                            <li><i class="bi bi-check"></i> <span>Pharetra massa massa ultricies</span></li>
-                            <li><i class="bi bi-check"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                        </ul>
-                        <a href="#" class="buy-btn">Buy Now</a>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-            </div>
-
-        </div>
-
-    </section><!-- /Pricing Section -->
-
     <!-- Faq Section -->
     <section id="faq" class="faq section light-background">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Frequently Asked Questions</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <p>Anda dapat melihat beberapa pertanyaan yang sering di tanyakan klien disini.</p>
         </div><!-- End Section Title -->
 
         <div class="container">
 
-            <div class="row faq-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="col-lg-5 d-flex">
-                    <i class="bi bi-question-circle"></i>
-                    <h4>Non consectetur a erat nam at lectus urna duis?</h4>
-                </div>
-                <div class="col-lg-7">
-                    <p>
-                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
-                        gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                    </p>
-                </div>
-            </div><!-- End F.A.Q Item-->
-
-            <div class="row faq-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="col-lg-5 d-flex">
-                    <i class="bi bi-question-circle"></i>
-                    <h4>Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?</h4>
-                </div>
-                <div class="col-lg-7">
-                    <p>
-                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-                        donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque
-                        elit ullamcorper dignissim.
-                    </p>
-                </div>
-            </div><!-- End F.A.Q Item-->
-
-            <div class="row faq-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="col-lg-5 d-flex">
-                    <i class="bi bi-question-circle"></i>
-                    <h4>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?</h4>
-                </div>
-                <div class="col-lg-7">
-                    <p>
-                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar
-                        elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque
-                        eu tincidunt. Lectus urna duis convallis convallis tellus.
-                    </p>
-                </div>
-            </div><!-- End F.A.Q Item-->
-
-            <div class="row faq-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="col-lg-5 d-flex">
-                    <i class="bi bi-question-circle"></i>
-                    <h4>Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</h4>
-                </div>
-                <div class="col-lg-7">
-                    <p>
-                        Aperiam itaque sit optio et deleniti eos nihil quidem cumque. Voluptas dolorum accusantium sunt sit
-                        enim. Provident consequuntur quam aut reiciendis qui rerum dolorem sit odio. Repellat assumenda
-                        soluta sunt pariatur error doloribus fuga.
-                    </p>
-                </div>
-            </div><!-- End F.A.Q Item-->
-
-            <div class="row faq-item" data-aos="fade-up" data-aos-delay="500">
-                <div class="col-lg-5 d-flex">
-                    <i class="bi bi-question-circle"></i>
-                    <h4>Tempus quam pellentesque nec nam aliquam sem et tortor consequat?</h4>
-                </div>
-                <div class="col-lg-7">
-                    <p>
-                        Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in.
-                        Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est.
-                        Purus gravida quis blandit turpis cursus in
-                    </p>
-                </div>
-            </div><!-- End F.A.Q Item-->
+            @foreach ($faqs as $faq)
+                <div class="row faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-5 d-flex">
+                        <i class="bi bi-question-circle"></i>
+                        <h4>{{ $faq->pertanyaan }}</h4>
+                    </div>
+                    <div class="col-lg-7">
+                        <p>
+                            {{ $faq->jawaban }}
+                        </p>
+                    </div>
+                </div><!-- End F.A.Q Item-->
+            @endforeach
 
         </div>
 

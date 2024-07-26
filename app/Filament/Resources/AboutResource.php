@@ -21,7 +21,7 @@ class AboutResource extends Resource
 
     protected static ?string $navigationGroup = 'Settings';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
@@ -54,20 +54,44 @@ class AboutResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('school'),
-                Tables\Columns\TextColumn::make('major'),
-                Tables\Columns\TextColumn::make('work'),
-                Tables\Columns\TextColumn::make('hobby'),
-                Tables\Columns\TextColumn::make('technology'),
-                Tables\Columns\TextColumn::make('address'),
-                Tables\Columns\TextColumn::make('tlp'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(50)
+                    ->wrap(),
+                Tables\Columns\TextColumn::make('school')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('major')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('work')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('hobby')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('technology')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('address')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('tlp')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
+                    ->dateTime()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //Tables\Filters\TrashedFilter::make(),
